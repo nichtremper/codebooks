@@ -4,12 +4,10 @@
 This keeps a copy of useful code for later use in stata.
 */
 
-
 // test if a variable is numeric/string
 foreach v of varlist * {
-	capture confirm string variable `v' // creates underscore variable that takes 1 if confirm statement is true and 0 if not
-	if _rc { // if true that variable is string
+	capture confirm numeric variable `v' // creates scalar _rc that takes 0 if numeric
+	if _rc != 0 { // if not numeric, if numeric should be if _rc == 0
 		/*DO STUFF*/
 	}
 }
-
