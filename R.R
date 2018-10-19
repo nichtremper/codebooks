@@ -9,3 +9,19 @@ na_variable <- function(var, df = data.frame) {
     filter(is.na(!!var)) %>% 
     count()
 }
+
+
+## performing a function over several data.frames
+a <- 1 # create dataframes
+b <- 2
+d <- 3
+ 
+ls <- list(a = a, b = b, d = d) # assign data.frames to list
+ 
+foo <- function(x){
+  assign(x, get(x) + 1, envir = .GlobalEnv) # get tells R to grab a string and return as object. sets environment to global
+}
+ 
+lapply(names(ls), foo) 
+
+
